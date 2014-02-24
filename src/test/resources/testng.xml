@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Clarus Test Suite" verbose="10" parallel="classes"	thread-count="5">
+	<parameter name="browser" value="saucegridfirefox27" />
+	<parameter name="sauceUser" value="djangofan" />
+	<parameter name="sauceKey" value="78601f0a-2a66-4e7e-b086-e805707e7699" />
+	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
+	<test name="LastNameSearch">
+		<parameter name="lastName" value="Smith" />
+		<parameter name="procedure" value="Knee" />
+		<packages>
+			<package name="qa.se.builder.tests" />
+		</packages>
+		<!-- <classes>
+			<class name="qa.se.builder.tests.NeighborhoodHP_Search" />
+		</classes> -->
+	</test>
+</suite>
