@@ -23,5 +23,5 @@ This project will run within Eclipse, IntelliJ IDEA, or from the command line us
 
 ## Using jenkins
 
-This framework is designed to run multi-threaded tests against SauceLabs.
+This framework is designed to run multi-threaded tests against SauceLabs using Maven.  Jenkins can execute Maven builds and so this framework is perfect for use with Jenkins as a job/test scheduler.
 
