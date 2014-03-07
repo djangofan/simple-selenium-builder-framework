@@ -2,8 +2,13 @@ simple-selenium-builder-framework
 ======================
 Selenium test framework designed to run recorded tests on SauceLabs.
 
+## Use cases
 
-##instructions
+1.  If you need to monitor 100 different websites and just check for one simple thing on each one, then just record 100 Selenium builder recordings, export them to Java/TestNG format, and then drop them into this framework.
+2.  If you have a website with 3 text fields on it and you want to test all combinations of entering data into those fields without using unit test parameterization, then just create 6 Selenium Builder recordings that represent those combinations and dropt them into this framework.
+
+
+## Instructions
 
 This project will run within Eclipse, IntelliJ IDEA, or from the command line using Maven.
 
