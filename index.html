@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>simple-selenium-builder-framework by djangofan</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>simple-selenium-builder-framework</h1>
+        <p>Simple framework designed to run Selenium Builder scripts.</p>
+
+        <p class="view"><a href="https://github.com/djangofan/simple-selenium-builder-framework">View the Project on GitHub <small>djangofan/simple-selenium-builder-framework</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="simple-selenium-builder-framework" class="anchor" href="#simple-selenium-builder-framework"><span class="octicon octicon-link"></span></a>simple-selenium-builder-framework</h1>
+
+<p>Selenium test framework designed to run recorded tests on SauceLabs.</p>
+
+<h2>
+<a name="use-cases" class="anchor" href="#use-cases"><span class="octicon octicon-link"></span></a>Use cases</h2>
+
+<ol>
+<li> If you need to monitor 100 different websites and just check for one simple thing on each one, then just record 100 Selenium builder recordings, each in a separate test class, export them to Java/TestNG format, and then drop them into this framework.</li>
+<li> If you have a website with 3 text fields on it and you want to test all combinations of entering data into those fields without using unit test parameterization, then just create 6 Selenium Builder recordings that represent those combinations, put them each in a separate test class, and drop them into this framework.</li>
+</ol><h2>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>This framework is capable of having more than one <a href="https://github.com/Test" class="user-mention">@Test</a> annotated method in each test class.</p>
+
+<h2>
+<a name="instructions" class="anchor" href="#instructions"><span class="octicon octicon-link"></span></a>Instructions</h2>
+
+<p>This project will run within Eclipse, IntelliJ IDEA, or from the command line using Maven.</p>
+
+<ol>
+<li> Import this GitHub archive into Eclipse as a "Maven project".</li>
+<li> Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
+  just like what is provided in the example.</li>
+<li> Run-As "mvn.bat test", otherwise known as the goal "test" executed by Maven.</li>
+<li> View the HTML test result report in the target folder that is generated at runtime.</li>
+</ol><h2>
+<a name="using-jenkins" class="anchor" href="#using-jenkins"><span class="octicon octicon-link"></span></a>Using jenkins</h2>
+
+<p>This framework is designed to run multi-threaded tests against SauceLabs using Maven.  Jenkins can execute Maven builds and so this framework is perfect for use with Jenkins as a job/test scheduler.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/djangofan">djangofan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
