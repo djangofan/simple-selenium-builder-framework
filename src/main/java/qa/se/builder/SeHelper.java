@@ -25,7 +25,8 @@ public final class SeHelper
 {	
 	private final String browser;
 	private final String testName;
-	private String build;
+	private String buildName;
+	//private String sauceTags;
 	private String sauceUser;
 	private String sauceKey;
 	private String sessionId;
@@ -74,6 +75,10 @@ public final class SeHelper
 	public String getTestName() {
 		return testName;
 	}
+	
+	public void setTestName( String name ) {
+		throw new UnsupportedOperationException( "Cannot set 'testName'. It is final, by design, and set by the builder." );
+	}
 
 	public String getHubUrl() {
 		return hubUrl;
@@ -116,7 +121,11 @@ public final class SeHelper
 	
 	public String getBrowser() {
 		return browser;
-	}	
+	}
+	
+	public void setBrowser( String name ) {
+		throw new UnsupportedOperationException( "Cannot set 'browser'. It is final, by design, and set by the builder." );
+	}
 	
 	public boolean uploadResultToSauceLabs( String testName, String build, Boolean pass ) {
 		if ( sauceKey == null || sauceKey.isEmpty() && sauceUser == null || sauceUser.isEmpty() ) {
@@ -177,12 +186,12 @@ public final class SeHelper
 		Reporter.log( "Finished call to quitDriver method.", true );
 	}
 
-	public String getBuild() {
-		return build;
+	public String getBuildName() {
+		return buildName;
 	}
 
 	public void setBuild(String build) {
-		this.build = build;
+		this.buildName = build;
 	}
 
 	/*
@@ -236,7 +245,7 @@ public final class SeHelper
 			return this;
 		}
 
-		public SeHelper build() {
+		public SeHelper construct() {
 			this.setCapabilities();
 			if ( this.isGrid ) {
 				this.loadGridDriver();
