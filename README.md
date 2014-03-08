@@ -9,7 +9,8 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
 
 ## Notes
 
-This framework is capable of having more than one @Test annotated method in each test class.
+1. This framework is capable of having more than one @Test annotated method in each test class.
+2. This framework uses the 'Builder' design pattern to generate browser instances.
 
 ## Instructions
 
