@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-public class TestBase {
+public class MultiTestPerClass {
 
 	public Map<String, String> suiteParams;
 	public String testPrefix;	

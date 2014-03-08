@@ -2,11 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Test Suite" verbose="5" parallel="classes"	thread-count="5">
 	<parameter name="browser" value="saucegridfirefox27" />
-	<parameter name="sauceUser" value="au" />
-	<parameter name="sauceKey" value="aaa85696-2a40-486b-98de-38ff7e13d6fc" />
+	<parameter name="sauceUser" value="aus" />
+	<parameter name="sauceKey" value="000000-2a40-486b-98de-38ff7e13d6fc" />
 	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
 	<test name="search">
-		<parameter name="searchString" value="Selenium" />
+		<parameter name="searchMaven" value="selenium-java" />
+		<parameter name="searchDogpile" value="Selenium" />
 		<packages>
 			<package name="qa.se.builder.tests" />
 		</packages>

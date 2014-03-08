@@ -9,7 +9,8 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
 
 ## Notes
 
-1. This framework WILL NOT run with more than one @Test annotated method in each test class.  This is because of the instance level class members which cannot be shared between multiple browser instances.
+1. This framework WILL NOT run with more than one @Test annotated method in each test class.  This is because of the 
+   instance level class members which cannot be shared between multiple browser instances.  I will probably fix this later.
 2. This framework uses the 'Builder' design pattern to generate browser instances.
 3. Will run on a free SauceLabs account with a max of 2 threads.
 
