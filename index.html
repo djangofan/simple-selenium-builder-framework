@@ -31,7 +31,7 @@
         <h1>
 <a name="simple-selenium-builder-framework" class="anchor" href="#simple-selenium-builder-framework"><span class="octicon octicon-link"></span></a>simple-selenium-builder-framework</h1>
 
-<p>Selenium test framework designed to run 'Selenium Builder' recorded tests on 'SauceLabs' using 'TestNG' as a threaded test runner.</p>
+<p>Selenium test framework designed to run 'Selenium Builder' recorded tests on 'SauceLabs' using 'TestNG' as a threaded test runner.   Get up and running on SauceLabs in just over 10 minutes (see instructions below).</p>
 
 <h2>
 <a name="use-cases" class="anchor" href="#use-cases"><span class="octicon octicon-link"></span></a>Use cases</h2>
@@ -40,21 +40,59 @@
 <li> If you need to monitor 100 different websites and just check for one simple thing on each one, then just record 100 Selenium builder recordings, each in a separate test class, export them to Java/TestNG format, and then drop them into this framework.</li>
 <li> If you have a website with 3 text fields on it and you want to test all combinations of entering data into those fields without using unit test parameterization, then just create 6 Selenium Builder recordings that represent those combinations, put them each in a separate test class, and drop them into this framework.</li>
 </ol><h2>
-<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+<a name="implemented-features" class="anchor" href="#implemented-features"><span class="octicon octicon-link"></span></a>Implemented Features</h2>
 
-<ol>
-<li>This framework is capable of having more than one <a href="https://github.com/Test" class="user-mention">@Test</a> annotated method in each test class.</li>
-<li>This framework uses the 'Builder' design pattern to generate browser instances.</li>
-</ol><h2>
+<table>
+<tr>
+<th>Feature</th>
+    <th>Description</th>
+  </tr>
+<tr>
+<th>2 Modes of Operation</th>
+    <td>This framework has two different test base classes.  One supports more than one <a href="https://github.com/Test" class="user-mention">@Test</a> annotated method in each test class and the other supports only one.  Keep this in mind, depending on your purpose.  I have provided an example of each in this demo.</td>
+  </tr>
+<tr>
+<th>Builder Design Pattern</th>
+    <td>This framework uses the 'Builder' design pattern to generate browser instances.</td>
+  </tr>
+<tr>
+<th>SauceLabs Driver</th>
+    <td>Will run on a free SauceLabs account with a max of 2 threads.  This demo is not designed to run local Selenium browsers but can be adjusted to do so.</td>
+  </tr>
+<tr>
+<th>SauceLabs REST API</th>
+    <td>Pushes test results to SauceLabs to mark test as passed or failed.</td>
+  </tr>
+<tr>
+<th>Report Logging</th>
+    <td>Logs output to the TestNG HTML report as well as to a SLF4j log file.</td>
+  </tr>
+<tr>
+<th>TestNG</th>
+    <td>Uses TestNG as a multi-threaded test runner and configuration handler.</td>
+  </tr>
+<tr>
+<th>No DataProvider</th>
+    <td>This framework does not use a DataProvider but if you wanted to generate browser instances from a DataProvider method, this framework could be adjusted to do so.</td>
+  </tr>
+<tr>
+<th>Command Line Support</th>
+    <td>You can run these tests without Eclipse, from the command line, by using the command <b>mvn.bat clean compile test-compile test</b>.</td>
+  </tr>
+<tr>
+<th>Selenium Builder</th>
+    <td>This framework is designed for use with <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> in mind.  Using it as a general Selenium framework would take code refactoring.</td>
+  </tr>
+</table><h2>
 <a name="instructions" class="anchor" href="#instructions"><span class="octicon octicon-link"></span></a>Instructions</h2>
 
 <p>This project will run within Eclipse, IntelliJ IDEA, or from the command line using Maven.</p>
 
 <ol>
-<li> Import this GitHub archive into Eclipse as a "Maven project".</li>
+<li> Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.</li>
 <li> Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
   just like what is provided in the example.</li>
-<li> Run-As "mvn.bat test", otherwise known as the goal "test" executed by Maven.</li>
+<li> Run-As <code>mvn.bat clean compile test-compile test</code>, otherwise known as the goal <code>test</code> executed by Maven.</li>
 <li> View the HTML test result report in the target folder that is generated at runtime.</li>
 </ol><h2>
 <a name="using-jenkins" class="anchor" href="#using-jenkins"><span class="octicon octicon-link"></span></a>Using jenkins</h2>
