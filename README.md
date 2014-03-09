@@ -55,6 +55,7 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
 
 This project will run within Eclipse, IntelliJ IDEA, or from the command line using Maven.
 
+1.  Get a free <a href="https://saucelabs.com/">SauceLabs</a> account.
 1.  Install the <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> firefox plugin.
 2.  Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.
 3.  Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
