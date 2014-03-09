@@ -89,11 +89,12 @@
 <p>This project will run within Eclipse, IntelliJ IDEA, or from the command line using Maven.</p>
 
 <ol>
+<li> Install the <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> firefox plugin.</li>
 <li> Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.</li>
 <li> Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
   just like what is provided in the example.</li>
 <li> Run-As <code>mvn.bat clean compile test-compile test</code>, otherwise known as the goal <code>test</code> executed by Maven.</li>
-<li> View the HTML test result report in the target folder that is generated at runtime.</li>
+<li> View the HTML test result report in the target/surefire-reports folder that is generated at runtime.</li>
 </ol><h2>
 <a name="using-jenkins" class="anchor" href="#using-jenkins"><span class="octicon octicon-link"></span></a>Using jenkins</h2>
 
