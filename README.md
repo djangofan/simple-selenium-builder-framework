@@ -7,7 +7,17 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
 1.  If you need to monitor 100 different websites and just check for one simple thing on each one, then just record 100 Selenium builder recordings, each in a separate test class, export them to Java/TestNG format, and then drop them into this framework.
 2.  If you have a website with 3 text fields on it and you want to test all combinations of entering data into those fields without using unit test parameterization, then just create 6 Selenium Builder recordings that represent those combinations, put them each in a separate test class, and drop them into this framework.
 
-## Notes
+## Implemented Features
+<table>
+  <tr>
+    <th>Feature</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <th>2 Modes of Operation</th>
+    <td>This framework has two different test base classes.  One supports more than one @Test annotated method in each test class and the other supports only one.  Keep this in mind, depending on your purpose.  I have provided an example of each in this demo.</td>
+  </tr>
+</table>
 
 1. This framework has two different test base classes.  One supports more than one @Test annotated method in each test class and the other supports only one.  Keep this in mind, depending on your purpose.  I have provided an example of each in this demo.
 2. This framework uses the 'Builder' design pattern to generate browser instances.
