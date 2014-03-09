@@ -37,6 +37,10 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
     <th>TestNG</th>
     <td>Uses TestNG as a multi-threaded test runner and configuration handler.</td>
   </tr>
+  <tr>
+    <th>No DataProvider</th>
+    <td>This framework does not use a DataProvider but if you wanted to generate browser instances from a DataProvider method, this framework could be adjusted to do so.</td>
+  </tr>
 </table>
 
 ## Instructions
