@@ -21,9 +21,17 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
     <th>Builder Design Pattern</th>
     <td>This framework uses the 'Builder' design pattern to generate browser instances.</td>
   </tr>
-    <tr>
+  <tr>
     <th>For use with SauceLabs</th>
     <td>Will run on a free SauceLabs account with a max of 2 threads.</td>
+  </tr>
+  <tr>
+    <th>SauceLabs REST API</th>
+    <td>Pushes test results to SauceLabs to mark test as passed or failed.</td>
+  </tr>
+  <tr>
+    <th>Report Logging</th>
+    <td>Logs output to the TestNG HTML report as well as to a SLF4j log file.</td>
   </tr>
 </table>
 
