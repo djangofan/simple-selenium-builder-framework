@@ -45,6 +45,10 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
     <th>Command Line Support</th>
     <td>You can run these tests without Eclipse, from the command line, by using the command <b>mvn.bat clean compile test-compile test</b>.</td>
   </tr>
+<tr>
+    <th>Selenium Builder</th>
+    <td>This framework is designed for use with <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> in mind.  Using it as a general Selenium framework would take code refactoring.</td>
+  </tr>
 </table>
 
 ## Instructions
