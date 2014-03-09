@@ -17,11 +17,15 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
     <th>2 Modes of Operation</th>
     <td>This framework has two different test base classes.  One supports more than one @Test annotated method in each test class and the other supports only one.  Keep this in mind, depending on your purpose.  I have provided an example of each in this demo.</td>
   </tr>
+    <tr>
+    <th>Builder Design Pattern</th>
+    <td>This framework uses the 'Builder' design pattern to generate browser instances.</td>
+  </tr>
+    <tr>
+    <th>For use with SauceLabs</th>
+    <td>Will run on a free SauceLabs account with a max of 2 threads.</td>
+  </tr>
 </table>
-
-1. This framework has two different test base classes.  One supports more than one @Test annotated method in each test class and the other supports only one.  Keep this in mind, depending on your purpose.  I have provided an example of each in this demo.
-2. This framework uses the 'Builder' design pattern to generate browser instances.
-3. Will run on a free SauceLabs account with a max of 2 threads.
 
 ## Instructions
 
