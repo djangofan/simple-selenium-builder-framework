@@ -6,15 +6,9 @@
 	<parameter name="sauceKey" value="0000000-2a40-486b-98de-38ff7e13d6fc" />
 	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
 	<test name="search">
-		<parameter name="searchMaven" value="selenium-java" />
-		<parameter name="searchDogpile" value="Selenium" />
-		<parameter name="searchWebMD" value="Lialda oral" />
+    <parameter name="searchWebMD" value="Lialda oral" />
 		<packages>
-			<package name="qa.se.builder.tests.single" />
 			<package name="qa.se.builder.tests.multi" />
 		</packages>
-		<!-- <classes>
-			<class name="qa.se.builder.tests.AnotherTest_Search" />
-		</classes> -->
 	</test>
 </suite>

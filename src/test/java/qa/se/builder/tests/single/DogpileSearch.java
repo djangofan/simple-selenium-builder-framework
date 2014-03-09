@@ -1,4 +1,4 @@
-package qa.se.builder.tests;
+package qa.se.builder.tests.single;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +13,8 @@ public class DogpileSearch extends OneTestPerClass {
 	
     @Test(enabled = true)
     public void testDogpileSearch( XmlTest test ) {
-    	logger.info("Start test...");
+    	testLog("Start test...");
+        logger.info( "TestNG test name: " + test.getName() );
     	
         wd.get("http://www.dogpile.com/");
         wd.findElement(By.id("topSearchTextBox")).click();

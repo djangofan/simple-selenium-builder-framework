@@ -47,7 +47,7 @@
 					<showSuccess>true</showSuccess>
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>${project.build.testOutputDirectory}\suites\${surefire.testng.suitexml}</suiteXmlFile> -->
-						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/${testng.configfile}</suiteXmlFile>
 					</suiteXmlFiles>
 					<configuration>
 						<systemPropertyVariables>

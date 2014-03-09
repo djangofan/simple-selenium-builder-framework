@@ -1,4 +1,4 @@
-package qa.se.builder.tests;
+package qa.se.builder.tests.single;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,8 +11,9 @@ public class MavenSearch extends OneTestPerClass {
 	
     @Test(enabled = true)
     public void testMavenSearch( XmlTest test ) {
-    	logger.info("Start test...");
-    	
+    	testLog("Start test...");
+        logger.info( "TestNG test name: " + test.getName() );
+        
         wd.get("http://search.maven.org/");
         wd.findElement(By.id("query")).click();
         wd.findElement(By.id("query")).clear();

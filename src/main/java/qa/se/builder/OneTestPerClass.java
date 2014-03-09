@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -48,7 +49,6 @@ public class OneTestPerClass {
 	@BeforeMethod
 	public void doPrep( XmlTest test ) {
 		logger.info("BeforeMethod doPrep...");
-        logger.info( "TestNG test name: " + test.getName() );
 		wd = se.getDriver();
 		util = se.getUtil();
 	}
@@ -66,7 +66,12 @@ public class OneTestPerClass {
 	}
 	
 	public void setBuildName( String name ) {
-		se.setBuild( name );
+		se.setBuildName( name );
+	}
+	
+	public void testLog( String message ) {
+		logger.info( message ); // make sure this logs to console also
+		Reporter.log( message );
 	}
 
 }

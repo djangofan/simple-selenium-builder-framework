@@ -35,6 +35,7 @@ public final class SeHelper
 	private WebDriver driver;
 	private DesiredCapabilities abilities;
 	private boolean isGrid;
+	private JSONArray tags;
 	
 	private static File CHROMEDRIVER = new File("chromedriver.exe");
 	private static File IEDRIVER = new File("IEDriverServer.exe");
@@ -43,7 +44,7 @@ public final class SeHelper
 	{
 		Reporter.log( "Creating new SeHelper object from a SeBuilder object...", true );
 		this.testName = builder.testName;
-		this.setBuild(builder.build);
+		this.setBuildName(builder.build);
 		this.browser = builder.browser;
 		this.sauceUser = builder.sauceUser;
 		this.sauceKey = builder.sauceKey;
@@ -53,6 +54,7 @@ public final class SeHelper
 		this.abilities = builder.abilities;
 		this.isGrid = builder.isGrid;
 		this.util = new SeUtil( this.driver );
+		this.tags = builder.tags;
 	}	
 	
 	public void navigateTo( String url ) {
@@ -190,8 +192,16 @@ public final class SeHelper
 		return buildName;
 	}
 
-	public void setBuild(String build) {
+	public void setBuildName( String build ) {
 		this.buildName = build;
+	}
+
+	public JSONArray getTags() {
+		return tags;
+	}
+
+	public void setTags(JSONArray tags) {
+		this.tags = tags;
 	}
 
 	/*
@@ -209,6 +219,7 @@ public final class SeHelper
 		private String sauceKey;
 		private DesiredCapabilities abilities;
 		private boolean isGrid = false; //default
+		private JSONArray tags;
 		
 		public SeBuilder( String testName, String browser ) {
 			this.testName = testName;
@@ -318,7 +329,7 @@ public final class SeHelper
 			case "safari":
 				this.abilities = DesiredCapabilities.safari();
 				break;
-			case "saucegridchrome31":
+			case "saucechrome":
 				this.setIsGrid( true );
 				this.abilities = DesiredCapabilities.chrome();
 				if ( testName.isEmpty() ) {
@@ -326,17 +337,17 @@ public final class SeHelper
 				} else {
 					this.abilities.setCapability( "name", this.testName );
 				}
-				JSONArray chtags = new JSONArray(); 
-				    chtags.add( this.browser ); 
-				    chtags.add("Windows 8"); 
-				    chtags.add("1280x1024"); 
-				this.abilities.setCapability( "tags", chtags );
+				tags = new JSONArray(); 
+				tags.add( this.browser ); 
+				tags.add("Win8"); 
+				tags.add("1280x1024"); 
+				this.abilities.setCapability( "tags", tags );
 				this.abilities.setCapability( "platform", Platform.WIN8 );
-				this.abilities.setCapability( "version", "31" );
+				this.abilities.setCapability( "version", "32" );
 				this.abilities.setCapability( "screen-resolution", "1280x1024" );
 				this.abilities.setCapability( "driver", "ALL" );
 				break;
-			case "saucegridfirefox27":
+			case "saucefirefox":
 				this.setIsGrid( true );
 				this.abilities = DesiredCapabilities.firefox();
 				if ( testName.isEmpty() ) {
@@ -344,21 +355,21 @@ public final class SeHelper
 				} else {
 					this.abilities.setCapability( "name", this.testName );
 				}
-				JSONArray fftags = new JSONArray(); 
-				    fftags.add( this.browser ); 
-				    fftags.add("Windows 8"); 
-				    fftags.add("1280x1024"); 
-				this.abilities.setCapability( "tags", fftags );
+				tags = new JSONArray(); 
+				tags.add( this.browser ); 
+				tags.add("Win8"); 
+				tags.add("1280x1024"); 
+				this.abilities.setCapability( "tags", tags );
 				this.abilities.setCapability( "platform", Platform.WIN8 );
 				this.abilities.setCapability( "version", "27" );
 				this.abilities.setCapability( "screen-resolution", "1280x1024" );
 				this.abilities.setCapability( "driver", "ALL" );
 				break;
-			case "localgridchrome":
+			case "gridchrome":
 				this.setIsGrid( true );
 				this.abilities = DesiredCapabilities.chrome();
 				break;
-			case "localgridfirefox":
+			case "gridfirefox":
 				this.setIsGrid( true );
 				this.abilities = DesiredCapabilities.firefox();
 				break;
