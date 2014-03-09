@@ -41,6 +41,10 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
     <th>No DataProvider</th>
     <td>This framework does not use a DataProvider but if you wanted to generate browser instances from a DataProvider method, this framework could be adjusted to do so.</td>
   </tr>
+  <tr>
+    <th>Command Line Support</th>
+    <td>You can run these tests without Eclipse, from the command line, by using the command ```mvn.bat clean compile test-compile test```.</td>
+  </tr>
 </table>
 
 ## Instructions
