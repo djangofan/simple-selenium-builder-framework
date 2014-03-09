@@ -1,6 +1,6 @@
 simple-selenium-builder-framework
 ======================
-Selenium test framework designed to run 'Selenium Builder' recorded tests on 'SauceLabs' using 'TestNG' as a threaded test runner.
+Selenium test framework designed to run 'Selenium Builder' recorded tests on 'SauceLabs' using 'TestNG' as a threaded test runner.   Get up and running on SauceLabs in just over 10 minutes (see instructions below).
 
 ## Use cases
 
