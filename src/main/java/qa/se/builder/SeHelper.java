@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Platform;
@@ -25,7 +26,7 @@ public final class SeHelper
 {	
 	private final String browser;
 	private final String testName;
-	private String buildName;
+	private String label;
 	//private String sauceTags;
 	private String sauceUser;
 	private String sauceKey;
@@ -36,15 +37,20 @@ public final class SeHelper
 	private DesiredCapabilities abilities;
 	private boolean isGrid;
 	private JSONArray tags;
+	protected String threadName;
+	protected Logger logger;
+	protected long threadId;
 	
 	private static File CHROMEDRIVER = new File("chromedriver.exe");
 	private static File IEDRIVER = new File("IEDriverServer.exe");
 
 	private SeHelper( SeBuilder builder ) 
 	{
-		Reporter.log( "Creating new SeHelper object from a SeBuilder object...", true );
+		logger = Logger.getLogger( this.getClass().getSimpleName() );
+		threadId = Thread.currentThread().getId();
+		helperLog( "Creating new SeHelper object from a SeBuilder object..." );
 		this.testName = builder.testName;
-		this.setBuildName(builder.build);
+		this.label = builder.label;
 		this.browser = builder.browser;
 		this.sauceUser = builder.sauceUser;
 		this.sauceKey = builder.sauceKey;
@@ -55,10 +61,11 @@ public final class SeHelper
 		this.isGrid = builder.isGrid;
 		this.util = new SeUtil( this.driver );
 		this.tags = builder.tags;
+		this.threadName = builder.threadName;
 	}	
 	
 	public void navigateTo( String url ) {
-		Reporter.log( "Navigating to URL: " + url, true );
+		helperLog( "Navigating to URL: " + url );
 		if ( !(driver == null) ) {
 			driver.navigate().to( url );
 		} else {
@@ -114,7 +121,7 @@ public final class SeHelper
 			String[] splitUrl = this.hubUrl.split("//");
 			this.hubUrl = splitUrl[0] + "//" + this.sauceUser + ":" + this.sauceKey + "@" + splitUrl[1];
 		}
-		Reporter.log( "Set grid URL to: " + this.hubUrl, true );
+		helperLog( "Set grid URL to: " + this.hubUrl );
 	}
 	
 	public void setUtil( SeUtil util ) {
@@ -129,18 +136,18 @@ public final class SeHelper
 		throw new UnsupportedOperationException( "Cannot set 'browser'. It is final, by design, and set by the builder." );
 	}
 	
-	public boolean uploadResultToSauceLabs( String testName, String build, Boolean pass ) {
+	public boolean uploadResultToSauceLabs( String testName, String label, Boolean pass ) {
 		if ( sauceKey == null || sauceKey.isEmpty() && sauceUser == null || sauceUser.isEmpty() ) {
 			throw new IllegalStateException( "This is not a SauceLabs test.  Cannot upload result." );
 		}
-		Reporter.log("Uploading sauce result for '" + build + "' : " + pass, true );
+		helperLog("Uploading sauce result for '" + testName + "' : " + pass );
 		Map<String, Object> updates = new HashMap<String, Object>();
 		if ( !testName.isEmpty() ) {
-			Reporter.log( "Updating SauceLabs test name to '" + testName + "'.", true );
+			helperLog( "Updating SauceLabs test name to '" + testName + "'." );
 			updates.put( "name", testName );
 		}
 		updates.put( "passed", pass.toString() );
-		updates.put( "build", build );
+		updates.put( "build", label );
 		SauceREST client;
 		try {
 			client = new SauceREST( this.getSauceUser(), this.getSauceKey() );
@@ -149,7 +156,7 @@ public final class SeHelper
 			return false;
 		}		
 		String jobInfo = client.getJobInfo( this.sessionId );
-		Reporter.log( "Job info: " + jobInfo, true );
+		helperLog( "Job info: " + jobInfo );
 		return true;
 	}
 
@@ -170,13 +177,13 @@ public final class SeHelper
 	}
 	
 	public void setWindowPosition( int width, int height, int fleft, int ftop ) {
-		Reporter.log( "Resizing window to: " + width + "x" + height + " at " + fleft + "x" + ftop, true );
+		helperLog( "Resizing window to: " + width + "x" + height + " at " + fleft + "x" + ftop );
 		this.driver.manage().window().setPosition( new Point(fleft, ftop) );
 		this.driver.manage().window().setSize( new Dimension( width, height) );
 	}	
 
 	public void maximizeWindow() {
-		Reporter.log( "Maximize window is not yet implemented.", true );		
+		helperLog( "Maximize window is not yet implemented." );		
 	}	
 
 	public void setDriverTimeout( int i ) {
@@ -185,15 +192,15 @@ public final class SeHelper
 
 	public void quitDriver() {
 		this.driver.quit();	
-		Reporter.log( "Finished call to quitDriver method.", true );
+		helperLog( "Finished call to quitDriver method." );
 	}
 
-	public String getBuildName() {
-		return buildName;
+	public String getLabel() {
+		return this.label;
 	}
 
-	public void setBuildName( String build ) {
-		this.buildName = build;
+	public void setLabel( String label ) {
+		this.label = label;
 	}
 
 	public JSONArray getTags() {
@@ -209,9 +216,10 @@ public final class SeHelper
 	 */
 	public static class SeBuilder 
 	{
+		public String threadName;
 		private final String browser; // final to make it a required option
 		private final String testName; // final to make it a required option
-		private String build;
+		private String label;
 		private WebDriver driver;		
 		private String hubUrl;
 		private String sessionId;
@@ -220,11 +228,14 @@ public final class SeHelper
 		private DesiredCapabilities abilities;
 		private boolean isGrid = false; //default
 		private JSONArray tags;
+		protected Logger logger;
+		protected long threadId;
 		
 		public SeBuilder( String testName, String browser ) {
 			this.testName = testName;
 			this.browser = browser;
-			Reporter.log( "Initializing test '" + testName + "' with browser '" + browser + "'.", true );
+			logger = Logger.getLogger( this.getClass().getSimpleName() );
+			builderLog( "Initializing test '" + testName + "' with browser '" + browser + "'." );
 		}
 		
 		public SeBuilder hubUrl( String url ) {
@@ -233,26 +244,26 @@ public final class SeHelper
 			} else {
 				hubUrl = "http://" + sauceUser + ":" + sauceKey + "@" + url;
 			}
-			Reporter.log( "Hub URL set to: " + hubUrl, true );
+			builderLog( "Hub URL set to: " + hubUrl );
 			this.isGrid = true;
 			return this;
 		}
 		
 		public SeBuilder sauceUser( String sauceUser ) {
 			this.sauceUser = sauceUser;
-			Reporter.log( "Set sauceUser to: " + sauceUser, true );
+			builderLog( "Set sauceUser to: " + sauceUser );
 			return this;
 		}
 		
 		public SeBuilder sauceKey( String sauceKey ) {
 			this.sauceKey = sauceKey;
-			Reporter.log( "Set sauceKey to: " + sauceKey, true );
+			builderLog( "Set sauceKey to: " + sauceKey );
 			return this;
 		}
 		
-		public SeBuilder build( String build ) {
-			this.build = build;
-			Reporter.log( "Set build to: " + build, true );
+		public SeBuilder setLabel( String label ) {
+			this.label = label;
+			builderLog( "Set label to: " + label );
 			return this;
 		}
 
@@ -278,18 +289,18 @@ public final class SeHelper
 		}
 		
 		public void loadGridDriver() {
-			Reporter.log( "Loading grid driver...", true );
+			builderLog( "Loading grid driver..." );
 			try {
 				this.driver = new RemoteWebDriver( asURL( hubUrl ), this.abilities );				
 			} catch ( Exception e ) {
-				Reporter.log( "\nThere was a problem loading the driver:", true );
+				builderLog( "\nThere was a problem loading the driver:" );
 				e.printStackTrace();
 			}
-	    	Reporter.log("Finished loading grid driver.");
+			builderLog("Finished loading grid driver.");
 		}
 
 		public void loadLocalDriver() {
-			Reporter.log( "Loading local WebDriver '" + this.browser + "' instance...", true );
+			builderLog( "Loading local WebDriver '" + this.browser + "' instance..." );
 			switch ( browser ) {
 			case "chrome":
 				this.driver = new ChromeDriver( abilities );
@@ -307,12 +318,12 @@ public final class SeHelper
 			default:
 				throw new IllegalStateException( "No local browser support for '" + browser + "'." );
 			}
-	    	Reporter.log( "Finished loading local WebDriver.", true );
+			builderLog( "Finished loading local WebDriver." );
 		}
 		
 		@SuppressWarnings("unchecked") // JSONArray using legacy API
 		public void setCapabilities() {
-			Reporter.log( "Loading WebDriver capabilities for '" + this.browser + "' instance...", true );
+			builderLog( "Loading WebDriver capabilities for '" + this.browser + "' instance..." );
 			switch ( browser ) {
 			case "chrome":
 				System.setProperty( "webdriver.chrome.driver", CHROMEDRIVER.getAbsolutePath() );
@@ -376,14 +387,37 @@ public final class SeHelper
 			default:
 				throw new IllegalStateException( "Unsupported browser string '" + browser + "'." );
 			}
-			Reporter.log( "Finished setting up driver capabilities.", true );			
+			builderLog( "Finished setting up driver capabilities." );			
 		}
 		
 		public void setIsGrid( boolean is ) {
 			this.isGrid = is;
 		}
 		
+		public void builderLog( String message, long thread ) {
+			logger.info( "[Thread-" + thread + "] " + message );
+			Reporter.log( "[Thread-" + thread + "] " + message );
+		}
+		
+		public void builderLog( String message ) {
+			builderLog( message, threadId );
+		}
+		
+	}
+
+	public long getThreadId() {
+		return Thread.currentThread().getId();
+	}
+	
+	public void helperLog( String message, long thread ) {
+		logger.info( "[Thread-" + thread + "] " + message );
+		Reporter.log( "[Thread-" + thread + "] " + message );
+	}
+	
+	public void helperLog( String message ) {
+		helperLog( message, threadId );
 	}
 	
 }
+
 
