@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.xml.XmlTest;
 
-public class OneTestPerClass {
+public class TestBase {
 
 	public Map<String, String> suiteParams;
 	public String testPrefix;	

@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 import org.testng.xml.XmlTest;
 import org.openqa.selenium.*;
 
-import qa.se.builder.OneTestPerClass;
+import qa.se.builder.TestBase;
 
-public class MavenSearch extends OneTestPerClass {
+public class MavenSearch extends TestBase {
 	
     @Test(enabled = true)
     public void testMavenSearch( XmlTest test ) {

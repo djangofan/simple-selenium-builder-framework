@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 import org.testng.xml.XmlTest;
 import org.openqa.selenium.*;
 
-import qa.se.builder.OneTestPerClass;
+import qa.se.builder.TestBase;
 
-public class DogpileSearch extends OneTestPerClass {
+public class DogpileSearch extends TestBase {
 	
 	private By aboutLink = By.xpath( ".//*[@id='footerLinks']/li[4]/a" );
 	

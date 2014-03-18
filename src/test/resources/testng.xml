@@ -8,10 +8,8 @@
 	<test name="search">
 		<parameter name="searchMaven" value="selenium-java" />
 		<parameter name="searchDogpile" value="Selenium" />
-		<parameter name="searchWebMD" value="Lialda oral" />
 		<packages>
 			<package name="qa.se.builder.tests.single" />
-			<package name="qa.se.builder.tests.multi" />
 		</packages>
 		<!-- <classes>
 			<class name="qa.se.builder.tests.AnotherTest_Search" />
