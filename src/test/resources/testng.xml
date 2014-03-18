@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Test Suite" verbose="5" parallel="classes"	thread-count="5">
 	<parameter name="browser" value="saucefirefox" />
-	<parameter name="sauceUser" value="username" />
+	<parameter name="sauceUser" value="sauceuser" />
 	<parameter name="sauceKey" value="0000000-2a40-486b-98de-38ff7e13d6fc" />
 	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
 	<test name="search">

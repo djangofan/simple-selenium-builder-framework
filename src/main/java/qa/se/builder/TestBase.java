@@ -1,11 +1,9 @@
 package qa.se.builder;
 
-import java.io.File;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -13,34 +11,26 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.xml.XmlTest;
 
 public class TestBase {
 
 	public Map<String, String> suiteParams;
-	public String testPrefix;	
 	public boolean testResult = false;
 	public String browser;
 	public SeHelper se;
 	public WebDriver wd;
-	public SeUtil util;
-	
-	protected Logger logger = LoggerFactory.getLogger( this.getClass().getSimpleName() );
-	
-	@BeforeSuite
-	public void beforeAll() {
-		logger.info("BeforeSuite beforeAll...");
-		File log = new File( "simple.log" );
-		log.delete(); //clear output from previous runs
-	}
+	public SeUtil util;	
+	protected Logger logger;
+	protected long threadId;
 	
 	@BeforeClass
 	public void setUp( ITestContext context ) {
-		logger.info("BeforeClass setUp...");
+		logger = Logger.getLogger( this.getClass().getSimpleName() );
+		threadId = Thread.currentThread().getId();
+		testLog("BeforeClass setUp...");
 		suiteParams = context.getSuite().getXmlSuite().getAllParameters();
-		testPrefix = "Test_";
-		se = new SeHelper.SeBuilder( testPrefix + this.getClass().getSimpleName(), suiteParams.get( "browser" ) )    	  
+		se = new SeHelper.SeBuilder( this.getClass().getSimpleName(), suiteParams.get( "browser" ) )    	  
 		.sauceUser( suiteParams.get( "sauceUser" ) ).sauceKey( suiteParams.get( "sauceKey" ) )
 		.hubUrl( suiteParams.get( "hubUrl" ) ).construct();
 		se.setDriverTimeout( 20 );
@@ -48,16 +38,16 @@ public class TestBase {
  
 	@BeforeMethod
 	public void doPrep( XmlTest test ) {
-		logger.info("BeforeMethod doPrep...");
+		testLog("BeforeMethod doPrep...");
 		wd = se.getDriver();
 		util = se.getUtil();
 	}
 	
 	@AfterMethod
 	public void cleanUp( ITestResult result ) {
-		logger.info("AfterMethod cleanUp...");
+		testLog("AfterMethod cleanUp...");
 		testResult = result.isSuccess();
-		se.uploadResultToSauceLabs( testPrefix + this.getClass().getSimpleName(), se.getBuildName(), testResult );
+		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getBuildName(), testResult );
 	}
 	
 	@AfterClass
@@ -70,8 +60,8 @@ public class TestBase {
 	}
 	
 	public void testLog( String message ) {
-		logger.info( message ); // make sure this logs to console also
-		Reporter.log( message );
+		logger.info( "[Thread-" + threadId + "] " + message );
+		Reporter.log( "[Thread-" + threadId + "] " + message );
 	}
 
 }
