@@ -47,7 +47,7 @@ public class TestBase {
 	public void cleanUp( ITestResult result ) {
 		testLog("AfterMethod cleanUp...");
 		testResult = result.isSuccess();
-		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getBuildName(), testResult );
+		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getLabel(), testResult );
 	}
 	
 	@AfterClass
@@ -55,8 +55,8 @@ public class TestBase {
 		wd.quit();
 	}
 	
-	public void setBuildName( String name ) {
-		se.setBuildName( name );
+	public void setLabel( String name ) {
+		se.setLabel( name );
 	}
 	
 	public void testLog( String message ) {
