@@ -57,7 +57,7 @@ This project will run within Eclipse, IntelliJ IDEA, or from the command line us
 
 1.  Get a free <a href="https://saucelabs.com/">SauceLabs</a> account.
 1.  Install the <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> firefox plugin.
-2.  Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.
+2.  Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.  I use Eclipse Luna 4.4 with Java 1.8 but you can also use the older Eclipse with Java 1.7.
 3.  Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
       just like what is provided in the example.
 4.  Run-As ```mvn.bat clean compile test-compile test```, otherwise known as the goal ```test``` executed by Maven.
