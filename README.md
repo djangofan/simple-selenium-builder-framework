@@ -31,7 +31,7 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
   </tr>
   <tr>
     <th>Report Logging</th>
-    <td>Logs output to the TestNG HTML report as well as to a Log4j log file.</td>
+    <td>Logs output to the TestNG HTML report as well as to a Log4j log file.  Logs the thread id during tests so that you know which thread the Selenium messages are coming from.</td>
   </tr>
   <tr>
     <th>TestNG</th>
