@@ -60,8 +60,9 @@ This project will run within Eclipse, IntelliJ IDEA, or from the command line us
 2.  Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.  I use Eclipse Luna 4.4 with Java 1.8 but you can also use the older Eclipse with Java 1.7.
 3.  Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
       just like what is provided in the example.
-4.  Run-As ```mvn.bat clean compile test-compile test```, otherwise known as the goal ```test``` executed by Maven.
-5.  View the HTML test result report in the target/surefire-reports folder that is generated at runtime.
+4.  Make sure that the Maven 3.x bin directory is included in your system PATH.
+5.  Run-As ```mvn.bat clean compile test-compile test```, otherwise known as the goal ```test``` executed by Maven.
+6.  View the HTML test result report in the target/surefire-reports folder that is generated at runtime.
 
 ## Using jenkins
 
