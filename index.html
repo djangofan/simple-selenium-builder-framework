@@ -4,29 +4,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>simple-selenium-builder-framework by djangofan</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
-    <div class="wrapper">
+
       <header>
         <h1>simple-selenium-builder-framework</h1>
         <p>Simple framework designed to run Selenium Builder scripts.</p>
-
-        <p class="view"><a href="https://github.com/djangofan/simple-selenium-builder-framework">View the Project on GitHub <small>djangofan/simple-selenium-builder-framework</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/djangofan/simple-selenium-builder-framework">View On <strong>GitHub</strong></a></li>
-        </ul>
       </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/djangofan/simple-selenium-builder-framework" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/djangofan/simple-selenium-builder-framework/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
       <section>
         <h1>
 <a name="simple-selenium-builder-framework" class="anchor" href="#simple-selenium-builder-framework"><span class="octicon octicon-link"></span></a>simple-selenium-builder-framework</h1>
@@ -49,7 +60,7 @@
   </tr>
 <tr>
 <th>One Test Per Class</th>
-    <td>This framework works with one test per class.  It could be enhanced to support multiple <a href="https://github.com/Test" class="user-mention">@Test</a> annotated methods per class but that would take work.</td>
+    <td>This framework works with one test per class.  It could be enhanced to support multiple <a href="https://github.com/Test" class="user-mention">@Test</a> annotated methods per class but that would require a different TestBase class to support that.</td>
   </tr>
 <tr>
 <th>Builder Design Pattern</th>
@@ -65,7 +76,7 @@
   </tr>
 <tr>
 <th>Report Logging</th>
-    <td>Logs output to the TestNG HTML report as well as to a Log4j log file.</td>
+    <td>Logs output to the TestNG HTML report as well as to a Log4j log file.  Logs the thread id during tests so that you know which thread the Selenium messages are coming from.</td>
   </tr>
 <tr>
 <th>TestNG</th>
@@ -102,11 +113,11 @@
 <p>This framework is designed to run multi-threaded tests against SauceLabs using Maven.  Jenkins can execute Maven builds and so this framework is perfect for use with Jenkins as a job/test scheduler.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/djangofan">djangofan</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>Project maintained by <a href="https://github.com/djangofan">djangofan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
