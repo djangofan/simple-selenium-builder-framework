@@ -15,7 +15,7 @@ Selenium test framework designed to run 'Selenium Builder' recorded tests on 'Sa
   </tr>
   <tr>
     <th>One Test Per Class</th>
-    <td>This framework works with one test per class.  It could be enhanced to support multiple @Test annotated methods per class but that would take work.</td>
+    <td>This framework works with one test per class.  It could be enhanced to support multiple @Test annotated methods per class but that would require a different TestBase class to support that.</td>
   </tr>
     <tr>
     <th>Builder Design Pattern</th>
