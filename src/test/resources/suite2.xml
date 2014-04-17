@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Dogpile Test Suite" verbose="5" parallel="classes" thread-count="5">
+  <test name="Dogpile Site Tests">
+    <parameter name="searchDogpile" value="Selenium" />
+    <classes>
+      <class name="qa.se.builder.tests.DogpileSearch" />
+    </classes>
+  </test>
+</suite>

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Test Suite" verbose="5" parallel="classes"	thread-count="5">
+<suite name="Main Test Suite" verbose="5" parallel="classes"
+	thread-count="5">
 	<parameter name="browser" value="saucefirefox" />
-	<parameter name="sauceUser" value="sauceuser" />
-	<parameter name="sauceKey" value="0000000-2a40-486b-98de-38ff7e13d6fc" />
+	<parameter name="sauceUser" value="austenjt" />
+	<parameter name="sauceKey" value="00000-2a40-486b-98de-38ff7e13d6fc" />
 	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
-	<test name="search">
+	<listeners>
+		<listener class-name="qa.se.builder.JenkinsHTMLReport" />
+	</listeners>
+	<test name="Main Test Group">
 		<parameter name="searchMaven" value="selenium-java" />
 		<parameter name="searchDogpile" value="Selenium" />
 		<packages>
-			<package name="qa.se.builder.tests.single" />
+			<package name="qa.se.builder.tests" />
 		</packages>
-		<!-- <classes>
-			<class name="qa.se.builder.tests.AnotherTest_Search" />
-		</classes> -->
+		<!-- 
+		  <classes> 
+		        <class name="qa.se.builder.tests.AnotherTest_Search" /> 
+			</classes> 
+		-->
 	</test>
+	<suite-files>
+		<suite-file path="./suite1.xml" />
+		<suite-file path="./suite2.xml" />
+	</suite-files>
 </suite>

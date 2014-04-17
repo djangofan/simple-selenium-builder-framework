@@ -32,24 +32,19 @@ public class SeUtil {
 		return we;
 	}
 	
-	public void sleep( int units, int mills ) {
+	public void sleep( long mills ) {
 		DecimalFormat df = new DecimalFormat("###.##");
-		double totalSeconds = ((double)units*mills)/1000;
-		Reporter.log( "Explicit pause for " + df.format(totalSeconds) + " seconds divided by " + units + " units of time: ", true );
+		double totalSeconds = mills/1000;
+		Reporter.log( "Pause for " + df.format(totalSeconds) + " seconds.", true );
 		try {
-			Thread.currentThread();                
-			int x = 0;
-			while( x < units ) {
-				Thread.sleep( mills );
-				x = x + 1;
-			}
+			Thread.sleep( mills );
 		} catch ( InterruptedException ex ) {
 			ex.printStackTrace();
 		}        
 	}
 
 	public boolean elementsExist( By locator ) {
-		sleep( 1, 500 );
+		sleep( 500 );
 		return driver.findElements( locator ).size() != 0;
 	}
 
