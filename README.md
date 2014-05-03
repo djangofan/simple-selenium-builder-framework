@@ -61,8 +61,16 @@ This project will run within Eclipse, IntelliJ IDEA, or from the command line us
 3.  Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
       just like what is provided in the example.
 4.  If you want to run outside of Eclipse from the command line, make sure that the Maven 3.x bin directory is included in your system PATH.
-5.  Run-As ```mvn.bat clean compile test-compile test```, otherwise known as the goal ```test``` executed by Maven.
+5.  Create a new run configuration in your IDE that runs this command:
+      ```clean compile test-compile test```
+
 6.  View the HTML test result report in the target/surefire-reports folder that is generated at runtime.
+
+## Debugging
+
+And you may use multiple names/patterns, separated by commas, to execute only 1 targeted test:
+
+       mvn -Dtest=TestSquare,TestCi*le test
 
 ## Using jenkins
 

@@ -5,14 +5,12 @@
 	<artifactId>simple-selenium-builder-framework</artifactId>
 	<version>1.0</version>
 	<name>Simple Selenium Builder Framework</name>
-	<description>Record and playback framwork using Selenium Builder.</description>
-
+	<description>Playback framework for Selenium Builder scripts.</description>
 	<properties>
-		<selenium.version>2.39.0</selenium.version>
-		<maven.surefire.plugin.version>2.16</maven.surefire.plugin.version>
-		<testng.version>6.8.7</testng.version>
+		<selenium.version>2.41.0</selenium.version>
+		<maven.surefire.plugin.version>2.17</maven.surefire.plugin.version>
+		<testng.version>6.8.8</testng.version>
 	</properties>
-
 	<build>
 		<directory>target</directory>
 		<outputDirectory>target/classes</outputDirectory>
@@ -44,18 +42,11 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
-					<showSuccess>true</showSuccess>
 					<suiteXmlFiles>
-						<!-- <suiteXmlFile>${project.build.testOutputDirectory}\suites\${surefire.testng.suitexml}</suiteXmlFile> -->
-						<suiteXmlFile>src/test/resources/${testng.configfile}</suiteXmlFile>
+						<!-- <suiteXmlFile>${project.build.testOutputDirectory}\suites\${testng-suitexml}</suiteXmlFile> -->
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<configuration>
-						<systemPropertyVariables>
-							<build-name>${surefire.testng.build}</build-name>
-						</systemPropertyVariables>
-						<groups>${surefire.testng.groups}</groups>
-						<testFailureIgnore>true</testFailureIgnore>
-					</configuration>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -66,11 +57,11 @@
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.metamodel</groupId>
-			<artifactId>MetaModel-full</artifactId>
-			<version>4.0.0-incubating</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.metamodel</groupId>
+            <artifactId>MetaModel-full</artifactId>
+            <version>4.0.0-incubating</version>
+        </dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>

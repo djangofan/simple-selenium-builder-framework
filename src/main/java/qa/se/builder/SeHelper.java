@@ -351,7 +351,7 @@ public final class SeHelper
 				tags = new JSONArray(); 
 				tags.add( this.browser ); 
 				tags.add("Win8"); 
-				tags.add("1280x1024"); 
+				//tags.add("1280x1024");
 				this.abilities.setCapability( "tags", tags );
 				this.abilities.setCapability( "platform", Platform.WIN8 );
 				this.abilities.setCapability( "version", "32" );
@@ -369,7 +369,7 @@ public final class SeHelper
 				tags = new JSONArray(); 
 				tags.add( this.browser ); 
 				tags.add("Win8"); 
-				tags.add("1280x1024"); 
+				//tags.add("1280x1024");
 				this.abilities.setCapability( "tags", tags );
 				this.abilities.setCapability( "platform", Platform.WIN8 );
 				this.abilities.setCapability( "version", "27" );
