@@ -13,7 +13,7 @@ public class DogpileSearch extends TestBase {
 	
     @Test(enabled = true)
     public void testDogpileSearch( XmlTest test ) {
-        logMessage( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
+    	log( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
     	
         wd.get("http://www.dogpile.com/");
         wd.findElement(By.id("topSearchTextBox")).click();

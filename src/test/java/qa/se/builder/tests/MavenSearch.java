@@ -11,7 +11,7 @@ public class MavenSearch extends TestBase {
 	
     @Test(enabled = true)
     public void testMavenSearch( XmlTest test ) {
-    	logMessage( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
+    	log( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
         
         wd.get("http://search.maven.org/");
         wd.findElement(By.id("query")).click();

@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.xml.XmlTest;
 
-public class TestBase {
+public abstract class TestBase {
 
 	public Map<String, String> suiteParams;
 	public boolean testResult = false;
@@ -22,13 +22,13 @@ public class TestBase {
 	public WebDriver wd;
 	public SeUtil util;	
 	protected Logger logger;
-	protected long threadId;
+	private long threadId;
 	
 	@BeforeClass
 	public void setUp( ITestContext context ) {
-		logger = Logger.getLogger( this.getClass().getSimpleName() );
 		threadId = Thread.currentThread().getId();
-		logMessage("BeforeClass setUp...");
+		logger = Logger.getLogger( this.getClass().getSimpleName() );
+		innerLog("BeforeClass setUp...");
 		suiteParams = context.getSuite().getXmlSuite().getAllParameters();
 		se = new SeHelper.SeBuilder( this.getClass().getSimpleName(), suiteParams.get( "browser" ) )    	  
 		.sauceUser( suiteParams.get( "sauceUser" ) ).sauceKey( suiteParams.get( "sauceKey" ) )
@@ -38,16 +38,16 @@ public class TestBase {
  
 	@BeforeMethod
 	public void doPrep( XmlTest test ) {
-		logMessage("BeforeMethod doPrep...");
+		innerLog("BeforeMethod doPrep...");
 		wd = se.getDriver();
 		util = se.getUtil();
 	}
 	
 	@AfterMethod
 	public void cleanUp( ITestResult result ) {
-		logMessage("AfterMethod cleanUp...");
+		innerLog("AfterMethod cleanUp...");
 		testResult = result.isSuccess();
-		logMessage("Result was '" + testResult + "'.");
+		innerLog("Result was '" + testResult + "'.");
 		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getLabel(), testResult );
 	}
 	
@@ -60,9 +60,15 @@ public class TestBase {
 		se.setLabel( name );
 	}
 	
-	public void logMessage( String message ) {
-		logger.info( "[Thread-" + threadId + "] " + message );
-		Reporter.log( "[Thread-" + threadId + "] " + message );
+	protected void log( String message ) {
+		message = "[Thread-" + threadId + "] " + message;
+		logger.info( message );
+		Reporter.log( message );
+	}
+	
+	private void innerLog( String message ) {
+		message = "[Thread-" + threadId + "] " + message;
+		logger.info( message );
 	}
 
 }

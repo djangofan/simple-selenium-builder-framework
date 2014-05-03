@@ -22,12 +22,11 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Reporter;
 
-public final class SeHelper
-{	
+public final class SeHelper {	
+	
 	private final String browser;
 	private final String testName;
 	private String label;
-	//private String sauceTags;
 	private String sauceUser;
 	private String sauceKey;
 	private String sessionId;
@@ -38,14 +37,14 @@ public final class SeHelper
 	private boolean isGrid;
 	private JSONArray tags;
 	protected String threadName;
-	protected Logger logger;
 	protected long threadId;
+	protected Logger logger;
 	
-	private static File CHROMEDRIVER = new File("chromedriver.exe");
+	private static File CHROMEDRIVER = new File("chromedriver.exe"); // from http://chromedriver.storage.googleapis.com/index.html
 	private static File IEDRIVER = new File("IEDriverServer.exe");
 
-	private SeHelper( SeBuilder builder ) 
-	{
+	private SeHelper( SeBuilder builder ) {
+		
 		logger = Logger.getLogger( this.getClass().getSimpleName() );
 		threadId = Thread.currentThread().getId();
 		helperLog( "Creating new SeHelper object from a SeBuilder object..." );
@@ -209,6 +208,11 @@ public final class SeHelper
 
 	public void setTags(JSONArray tags) {
 		this.tags = tags;
+	}
+	
+	protected void helperLog( String message ) {
+		message = "[Thread-" + threadId + "] " + message;
+		logger.info( message );
 	}
 
 	/*
@@ -394,28 +398,11 @@ public final class SeHelper
 			this.isGrid = is;
 		}
 		
-		public void builderLog( String message, long thread ) {
-			logger.info( "[Thread-" + thread + "] " + message );
-			Reporter.log( "[Thread-" + thread + "] " + message );
-		}
-		
 		public void builderLog( String message ) {
-			builderLog( message, threadId );
+			message = "[Thread-" + threadId + "] " + message;
+			logger.info( message );
 		}
 		
-	}
-
-	public long getThreadId() {
-		return Thread.currentThread().getId();
-	}
-	
-	public void helperLog( String message, long thread ) {
-		logger.info( "[Thread-" + thread + "] " + message );
-		Reporter.log( "[Thread-" + thread + "] " + message );
-	}
-	
-	public void helperLog( String message ) {
-		helperLog( message, threadId );
 	}
 	
 }
