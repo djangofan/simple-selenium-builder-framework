@@ -106,9 +106,18 @@
 <li> Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
   just like what is provided in the example.</li>
 <li> If you want to run outside of Eclipse from the command line, make sure that the Maven 3.x bin directory is included in your system PATH.</li>
-<li> Run-As <code>mvn.bat clean compile test-compile test</code>, otherwise known as the goal <code>test</code> executed by Maven.</li>
-<li> View the HTML test result report in the target/surefire-reports folder that is generated at runtime.</li>
+<li><p>Create a new run configuration in your IDE that runs this command:
+  <code>clean compile test-compile test</code></p></li>
+<li><p>View the HTML test result report in the target/surefire-reports folder that is generated at runtime.</p></li>
 </ol><h2>
+<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
+
+<p>And you may use multiple names/patterns, separated by commas, to execute only 1 targeted test:</p>
+
+<pre><code>   mvn -Dtest=TestSquare,TestCi*le test
+</code></pre>
+
+<h2>
 <a name="using-jenkins" class="anchor" href="#using-jenkins"><span class="octicon octicon-link"></span></a>Using jenkins</h2>
 
 <p>This framework is designed to run multi-threaded tests against SauceLabs using Maven.  Jenkins can execute Maven builds and so this framework is perfect for use with Jenkins as a job/test scheduler.</p>
