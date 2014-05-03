@@ -68,7 +68,7 @@ This project will run within Eclipse, IntelliJ IDEA, or from the command line us
 
 ## Debugging
 
-And you may use multiple names/patterns, separated by commas, to execute only 1 targeted test:
+And you may use multiple names/patterns, separated by commas, to execute only 1 or more targeted tests:
 
        mvn -Dtest=TestSquare,TestCi*le test
 
