@@ -48,16 +48,12 @@ public abstract class TestBase {
 		innerLog("AfterMethod cleanUp...");
 		testResult = result.isSuccess();
 		innerLog("Result was '" + testResult + "'.");
-		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getLabel(), testResult );
+		se.uploadResultToSauceLabs( this.getClass().getSimpleName(), se.getBuildLabel(), testResult );
 	}
 	
 	@AfterClass
 	public void tearTown() {
 		wd.quit();
-	}
-	
-	public void setLabel( String name ) {
-		se.setLabel( name );
 	}
 	
 	protected void log( String message ) {

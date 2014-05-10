@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Maven Test Suite" verbose="5" parallel="classes" thread-count="5">
-  <test name="Maven Site Tests">
-    <parameter name="searchMaven" value="selenium-java" />
+<suite name="Google Elections Search Test Suite" verbose="5" parallel="classes" thread-count="5">
+  <test name="Google Elections Search Tests">
+    <parameter name="searchElections" value="jobs Obama" />
     <classes>
-      <class name="qa.se.builder.tests.MavenSearch" />
+      <class name="qa.se.builder.tests.GoogleElectionsSearch" />
     </classes>
   </test>
 </suite>
