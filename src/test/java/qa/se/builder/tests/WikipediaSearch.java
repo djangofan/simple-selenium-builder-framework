@@ -17,7 +17,10 @@ public class WikipediaSearch extends TestBase {
     	
         wd.get("http://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch&go=Go");
         wd.findElement(By.id("searchText")).click();
+        
+        // Selenium Builder was unable to record this next line
         wd.findElement(By.id("searchText")).sendKeys( test.getLocalParameters().get( "searchWikipedia" ) );
+        
         wd.findElement(By.cssSelector("input.mw-ui-button.mw-ui-progressive")).click();
         wd.findElement(By.linkText("List of earthquakes in Chile")).click();
         
