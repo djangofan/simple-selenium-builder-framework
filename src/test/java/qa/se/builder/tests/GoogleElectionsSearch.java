@@ -12,7 +12,7 @@ public class GoogleElectionsSearch extends TestBase {
 	private By resultCards = By.xpath( ".//*[@class='post-details']" );
 	
     @Test(enabled = true)
-    public void testDogpileSearch( XmlTest test ) {
+    public void testGoogleElectionsSearch( XmlTest test ) {
     	log( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
     	
         wd.get("http://www.google.com/elections/ed/us");

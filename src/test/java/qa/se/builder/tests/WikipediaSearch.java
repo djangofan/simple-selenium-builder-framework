@@ -12,7 +12,7 @@ public class WikipediaSearch extends TestBase {
 	private By pageTitle = By.xpath( ".//*[@id='firstHeading']/span" );
 	
     @Test(enabled = true)
-    public void testDogpileSearch( XmlTest test ) {
+    public void testWikipediaSearch( XmlTest test ) {
     	log( "Test '" + this.getClass().getSimpleName() + "' in test group '" + test.getName() + "'." );
     	
         wd.get("http://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch&go=Go");
