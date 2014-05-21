@@ -103,16 +103,18 @@
 <li> Get a free <a href="https://saucelabs.com/">SauceLabs</a> account.</li>
 <li> Install the <a href="http://sebuilder.github.io/se-builder/">Selenium Builder</a> firefox plugin.</li>
 <li> Import this GitHub archive into Eclipse as a "Maven project".  Download the .zip of this repo to your hard drive and unzip it.  I use Eclipse Luna 4.4 with Java 1.8 but you can also use the older Eclipse with Java 1.7.</li>
-<li> Create as many 'Selenium Builder' scripts as you want and place them in the "src/test/java/qa/se/builder" folder,
+<li> Edit the <code>src/test/resources/testng.xml</code> file and add your SauceLabs username and key into that configuration file.</li>
+<li> Create as many 'Selenium Builder' scripts as you want and place them in the <code>src/test/java/qa/se/builder</code> folder,
   just like what is provided in the example.</li>
 <li> If you want to run outside of Eclipse from the command line, make sure that the Maven 3.x bin directory is included in your system PATH.</li>
-<li><p>Create a new run configuration in your IDE that runs this command:
-  <code>clean compile test-compile test</code></p></li>
-<li><p>View the HTML test result report in the target/surefire-reports folder that is generated at runtime.</p></li>
+<li> Create a new run configuration in your IDE that runs this command:
+  <code>clean compile test-compile test</code>
+</li>
+<li> View the HTML test result report in the target/surefire-reports folder that is generated at runtime.</li>
 </ol><h2>
 <a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
 
-<p>And you may use multiple names/patterns, separated by commas, to execute only 1 targeted test:</p>
+<p>And you may use multiple names/patterns, separated by commas, to execute only 1 or more targeted tests:</p>
 
 <pre><code>   mvn -Dtest=TestSquare,TestCi*le test
 </code></pre>
