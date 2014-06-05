@@ -3,7 +3,7 @@
 <suite name="Builder Test Suite" verbose="5" parallel="classes"	thread-count="5">
 	<parameter name="browser" value="saucefirefox" />
 	<parameter name="sauceUser" value="austenjt" />
-	<parameter name="sauceKey" value="bde85696-2a40-486b-98de-38ff7e13d6fc" />
+	<parameter name="sauceKey" value="bde80000-2a40-486b-98de-38ff7e13d6fc" />
 	<parameter name="hubUrl" value="ondemand.saucelabs.com:80/wd/hub" />
 	<listeners>
 		<listener class-name="qa.se.builder.CustomReport" />
